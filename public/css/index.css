@@ -1,0 +1,61 @@
+.road {
+  position: absolute;
+  background: url(../images/road.png) repeat;
+}
+
+.trees {
+  position: absolute;
+  background: url(../images/tree.png) repeat 0 0;
+}
+
+.sea {
+  left: 0;
+  width: 100%;
+  height: 800px;
+  background: url(../images/sea.png) repeat 0 0;
+  -webkit-animation: seamove 6s linear infinite;
+  -moz-animation: seamove 6s linear infinite;
+  animation: seamove 6s linear infinite;
+}
+
+@-webkit-keyframes seamove {
+  0% {
+    background-position: 0 0;
+  }
+  100% {
+    background-position: 65px 0;
+  }
+}
+
+@-moz-keyframes seamove {
+  /* firefox support */
+}
+
+@-keyframes seamove {
+  /* future browsers support */
+}
+
+#wrapper * {
+  position: absolute;
+}
+
+#boat {
+  position: absolute;
+  bottom: 500px;
+  left: 50%;
+  margin-left: -210px;
+  width: 420px;
+  height: 194px;
+  background: url(../images/boat.png) no-repeat center;
+  -webkit-transition: all 5s linear 1.5s;
+  -moz-transition: all 5s linear 1.5s;
+  -transition: all 5s linear 1.5s;
+}
+
+#boat.sail {
+  left: -20%;
+}
+
+#contact.show {
+  opacity: 1;
+}
