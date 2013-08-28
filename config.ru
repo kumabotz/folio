@@ -1,4 +1,7 @@
-use Rack::Static, urls: ['/images', '/js', '/css'], root: 'public'
+require 'sass/plugin/rack'
+
+use Sass::Plugin::Rack
+use Rack::Static, urls: ['/images', '/js', '/stylesheets'], root: 'public'
 
 run lambda { |env|
   [

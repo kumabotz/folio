@@ -2,9 +2,11 @@ GEM
   remote: https://rubygems.org/
   specs:
     rack (1.5.2)
+    sass (3.2.10)
 
 PLATFORMS
   ruby
 
 DEPENDENCIES
   rack
+  sass
