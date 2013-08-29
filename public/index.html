@@ -21,12 +21,16 @@
   </script>
   <![endif]-->
   <script type="text/javascript">
+    $(document).ready(function() {
+      $('#innerLoading .me').sprite({fps: 9, no_of_frames: 3}).spState(1);
+      var game = new Game();
+    });
+
     function startGame() {
-      $(document).ready(function() {
-        // TODO
-      });
       $('html, body').animate({scrollTop: 0});
-      // TODO
+      $('#loadingGame').fadeOut('fast', function() {
+        $(this).remove();
+      });
     }
   </script>
 </head>
