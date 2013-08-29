@@ -31,41 +31,153 @@
   </script>
 </head>
 <body onload="startGame()">
-  <!-- ... -->
+  <div id="loadingGame">
+    <div id="innerLoading">
+      <div class="me"></div>
+      <p>Just a few moments</p>
+      <span>Don't go anywhere...</span>
+    </div>
+  </div>
+  <nav>
+    <ul class="clearfix">
+      <li><a class="current" href="#startCave">Home</a></li>
+      <li><a href="#aboutHouse">About Me</a></li>
+      <li><a href="#servicesHouse">Service & Skills</a></li>
+      <li><a href="#portfolioHouse">Recent Works</a></li>
+      <li><a href="#boat">Contact</a></li>
+      <li class="last"><a href="#howToPlay">?</a></li>
+    </ul>
+  </nav>
+
+  <!-- Notification Manager -->
+  <div id="notifications"><div class="inner"></div><span class="close">X</span></div>
+
   <div id="wrapper">
+    <!-- Main Text -->
     <hgroup id="myInfo">
-      <h1>YOUR NAME HERE</h1>
-      <h2>What do you do?</h2>
+      <h1>FIRST NAME <br/>LAST NAME</h1>
+      <h2>What Do You Do?</h2>
     </hgroup>
 
+    <!--  Start Text -->
+    <p id="startText">
+      <img src="images/keyboardArrows.png" alt="keyboard arrows" />
+      Start playing by using <br/>the keyboard arrows
+    </p>
+
+    <!-- Start Cave -->
     <div id="startCave" class="cave"></div>
     <div id="startCaveHole" class="caveHole"></div>
+    <div id="startCaveHoleTrack" class="caveHoleTrack"></div>
 
+    <!-- Main Road -->
     <div id="mainRoad" class="road"></div>
     <div id="leftFence"></div>
     <div id="rightFence"></div>
 
+    <!-- Me -->
+    <div id="author"></div>
+
+    <!-- Stop Station 1 -->
     <div id="aboutRoad" class="road side"></div>
     <div id="aboutHouse" class="house">
       <div class="door"></div>
       <div class="lightbox">
         <div class="inner about">
-          Lightbox content goes here...
+          <h2>About Me</h2>
         </div>
       </div>
     </div>
-    <div id="aboutSign" class="sign">
-      <span>About Me</span>
-    </div>
+    <div id="aboutSign" class="sign"><span>About Me</span></div>
+    <div id="aboutHole" class="hole"></div>
 
+    <!-- Stop Station 2 -->
+    <div id="servicesRoad" class="road side"></div>
+    <div id="servicesHouse" class="house">
+      <div class="door"></div>
+      <div class="lightbox">
+        <div class="inner services">
+          <h2>Services & Skills</h2>
+          <div class="clear"></div>
+        </div>
+      </div>
+    </div>
+    <div id="serviceSign" class="sign"><span>Services & Skills</span></div>
+    <div id="serviceHole" class="hole"></div>
+
+    <!-- Stop Station 3 -->
+    <div id="portfolioRoad" class="road side"></div>
+    <div id="portfolioHouse" class="house">
+      <div class="door"></div>
+      <div class="lightbox">
+        <div class="inner portfolio clearfix">
+          <h2>Recent Works</h2>
+          <div class="shelf"></div>
+          <div class="shelf bottom"></div>
+        </div>
+      </div>
+    </div>
+    <div id="portfolioSign" class="sign"><span>Recent Works</span></div>
+    <div id="portfolioHole" class="hole"></div>
+
+    <!-- View -->
     <div id="rightTrees" class="trees"></div>
     <div id="leftGrass" class="grass"></div>
 
+    <!-- End Cave -->
     <div id="endSea" class="sea"></div>
     <div id="endBridge" class="bridge"></div>
-
     <div id="boat" class="isMoored">
       <div class="meSail"></div>
+    </div>
+
+    <div id="contact">
+      <h1>Stay In Touch</h1>
+      <p>Feel free to leave your comment about anything you want.</p>
+    </div>
+
+    <!-- Flowers -->
+    <div class="flowers r1"></div>
+    <div class="flowers r2"></div>
+    <div class="flowers r3"></div>
+    <div class="flowers r4"></div>
+    <div class="flowers r5"></div>
+    <div class="flowers r6"></div>
+    <div class="flowers r7"></div>
+    <div class="flowers r8"></div>
+    <div class="flowers r9"></div>
+    <div class="flowers r10"></div>
+    <div class="flowers r11"></div>
+    <div class="flowers r12"></div>
+  </div>
+
+  <div id="howToPlay">
+    <div class="lightbox">
+      <div class="inner howtoplay">
+        <h2>How To Play?</h2>
+        <article>
+          <div id="htpArrows" class="box clearfix">
+            <div class="icon"></div>
+            <p>Move by using your keyboard arrows</p>
+          </div>
+          <div id="htpHouses" class="box clearfix">
+            <div class="icon"></div>
+            <p>Enter houses to get some information about me and view my projects</p>
+          </div>
+          <div id="htpMouse" class="box clearfix">
+            <div class="icon"></div>
+            <p>Teleport yourself directly to a specific point by left click on your mouse</p>
+          </div>
+          <div id="htpEsc" class="box clearfix">
+            <div class="icon"></div>
+            <p>Press the "Esc" key to exit houses and close the information bar</p>
+          </div>
+          <div id="htpShare" class="box clearfix">
+            <div class="icon"></div>
+            <p>Contact me and share this portfolio with your friends! :)</p>
+          </div>
+        </article>
+      </div>
     </div>
   </div>
 </body>
