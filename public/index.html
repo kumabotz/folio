@@ -13,10 +13,25 @@
   <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Molengo">
   <script type="text/javascript" src="js/jquery-1.10.2.min.js"></script>
   <script type="text/javascript" src="js/jquery.spritely-0.6.7.js"></script>
-  <!-- links and scripts -->
+  <script type="text/javascript" src="js/data.js"></script>
   <script type="text/javascript" src="js/game.js"></script>
+  <!--[if lt IE 9]>
+  <script type="text/javascript">
+    window.location = 'ie.html';
+  </script>
+  <![endif]-->
+  <script type="text/javascript">
+    function startGame() {
+      $(document).ready(function() {
+        // TODO
+      });
+      $('html, body').animate({scrollTop: 0});
+      // TODO
+    }
+  </script>
 </head>
-<body>
+<body onload="startGame()">
+  <!-- ... -->
   <div id="wrapper">
     <hgroup id="myInfo">
       <h1>YOUR NAME HERE</h1>
