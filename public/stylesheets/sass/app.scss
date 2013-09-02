@@ -7,6 +7,18 @@
   src: url('../fonts/slkscrb-webfont.woff') format('woff');
 }
 
+.clearfix {
+  display: inline-block;
+  &:after {
+    content: ".";
+    display: block;
+    clear: both;
+    visibility: hidden;
+    line-height: 0;
+    height: 0
+  }
+}
+
 body {
   overflow-x: hidden;
   padding: 0;
@@ -41,8 +53,25 @@ nav {
   -webkit-transition: top 0.4s ease-in-out 0s;
   -moz-transition: top 0.4s ease-in-out 0s;
   transition: top 0.4s ease-in-out 0s;
-  .show {
-    top: 0
+  .show { top: 0 }
+  ul {
+    width: 100%;
+    padding-left: 30px;
+  }
+  a {
+    // TODO
+    &:hover, .current {
+      // TODO
+    }
+  }
+  li.last {
+    a {
+      float: right;
+      margin-right: 30px;
+      padding: 10px;
+      margin: 10px 45px 10px 10px;
+      &:hover { border-radius: 50em }
+    }
   }
 }
 
