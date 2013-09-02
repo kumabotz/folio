@@ -1,8 +1,10 @@
 @font-face {
-  font-family: 'SilkscreenBold';
+  font: {
+    family: 'SilkscreenBold';
+    weight: normal;
+    style: normal
+  }
   src: url('../fonts/slkscrb-webfont.woff') format('woff');
-  font-weight: normal;
-  font-style: normal
 }
 
 body {
@@ -10,6 +12,38 @@ body {
   padding: 0;
   margin: 0;
   font: 11px/14px 'SilkscreenBold', Arial, sans-serif
+}
+
+nav {
+  position: fixed;
+  // top: -85px;
+  height: 55px;
+  left: 50%;
+  width: 960px;
+  margin: 10px 0 0 -480px;
+  text-align: center;
+  color: #fff;
+  z-index: 800;
+  border: 3px solid #fff;
+  border-radius: 30px;
+  background: #4f2e26;
+  background: -moz-linear-gradient(top, #4f2e26 0%, #2a1410 100%);
+  background: -webkit-gradient(linear, left top, left bottom,
+      color-stop(0%, #4f2e26), color-stop(100%, #2a1410));
+  background: -webkit-linear-gradient(top, #4f2e26 0%, #2a1410 100%);
+  background: -o-linear-gradient(top, #4f2e26 0%, #2a1410 100%);
+  background: -ms-linear-gradient(top, #4f2e26 0%, #2a1410 100%);
+  background: linear-gradient(top, #4f2e26 0%, #2a1410 100%);
+  text-shadow: 0px -1px 0px rgba(000, 000, 000, 0.2),
+      0px 1px 0px rgba(255, 255, 255, 0.3);
+  box-shadow: inset -1px 0px 0px 1px rgba(000, 000, 000, 0.2),
+      0 2px 5px rgba(0, 0, 0, 0.4);
+  -webkit-transition: top 0.4s ease-in-out 0s;
+  -moz-transition: top 0.4s ease-in-out 0s;
+  transition: top 0.4s ease-in-out 0s;
+  .show {
+    top: 0
+  }
 }
 
 /* Loading game */
@@ -32,7 +66,7 @@ body {
   left: 50%;
   margin: -50px 0 0 -100px;
   text-align: center;
-  font-family: 'Lekton', Helvetica, Arial, sans-serif
+  font-family: 'Lekton', Helvetica, Arial, sans-serif;
   p {
     margin-bottom: 5px;
     font-size: 14px;
@@ -40,7 +74,7 @@ body {
   }
   span {
     color: #909090;
-    font-weight: 12px
+    font-size: 12px
   }
   .me {
     width: 32px;
