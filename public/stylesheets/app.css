@@ -18,7 +18,7 @@ body {
   overflow-x: hidden;
   padding: 0;
   margin: 0;
-  font: 11px/14px "SilkscreenBold", Arial, sans-serif; }
+  font: 11px/14px 'SilkscreenBold', Arial, sans-serif; }
 
 nav {
   position: fixed;
@@ -48,6 +48,22 @@ nav {
   nav ul {
     width: 100%;
     padding-left: 30px; }
+  nav a {
+    float: left;
+    padding: 20px;
+    color: #fff;
+    text-decoration: none;
+    border-left: 1px solid transparent;
+    border-right: 1px solid transparent;
+    text-shadow: 1px 1px 0 #000; }
+    nav a:hover {
+      background: rgba(0, 0, 0, 0.3);
+      border-left: 1px solid rgba(0, 0, 0, 0.1);
+      border-right: 1px solid rgba(255, 255, 255, 0.1); }
+  nav a.current {
+    background: rgba(0, 0, 0, 0.3);
+    border-left: 1px solid rgba(0, 0, 0, 0.1);
+    border-right: 1px solid rgba(255, 255, 255, 0.1); }
   nav li.last a {
     float: right;
     margin-right: 30px;
@@ -56,7 +72,36 @@ nav {
     nav li.last a:hover {
       border-radius: 50em; }
 
-/* Loading game */
+#notifications {
+  position: fixed;
+  left: 10%;
+  width: 80%;
+  height: 50px;
+  box-shadow: 0 -1px 10px rgba(0, 0, 0, 0.5);
+  border-radius: 5px 5px 0 0;
+  z-index: 790;
+  text-shadow: 1px 1px 0 #fff;
+  background: #fff;
+  background: -moz-linear-gradient(top, white 0%, #e0e3e5 100%);
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, white), color-stop(100%, #e0e3e5));
+  background: -webkit-linear-gradient(top, white 0%, #e0e3e5 100%);
+  background: -o-linear-gradient(top, white 0%, #e0e3e5 100%);
+  background: -ms-linear-gradient(top, white 0%, #e0e3e5 100%);
+  background: linear-gradient(top, white 0%, #e0e3e5 100%);
+  -webkit-transition: bottom 0.4s ease-in-out 0s;
+  -moz-webkit-transition: bottom 0.4s ease-in-out 0s;
+  transition: bottom 0.4s ease-in-out 0s; }
+  #notifications .inner {
+    padding: 20px 40px 20px 50px; }
+  #notifications .close {
+    position: absolute;
+    right: 10px;
+    top: 10px;
+    color: #a7a7a7;
+    cursor: pointer; }
+    #notifications .close:hover {
+      color: #444; }
+
 #loadingGame {
   position: fixed;
   top: 0;
@@ -118,12 +163,8 @@ nav {
   }
 }
 */
-@-moz-keyframes seamove {
-  /* firefox support */ }
-
-@-keyframes seamove {
-  /* future browsers support */ }
-
+@-moz-keyframes seamove {}
+@-keyframes seamove {}
 /*
 #wrapper * {
   position: absolute;
