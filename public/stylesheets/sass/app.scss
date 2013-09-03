@@ -34,7 +34,7 @@ body {
 
 nav {
   position: fixed;
-  // top: -85px;
+  top: -85px;
   height: 55px;
   left: 50%;
   width: 960px;
@@ -94,10 +94,22 @@ nav {
   }
 }
 
+#wrapper {
+  border: 1px solid #c7c7c7;
+  margin: 0 auto;
+  width: 100%;
+  height: 2500px;
+  position: relative;
+  background: url(../images/bg.png) repeat;
+  overflow: hidden;
+}
+
+// TODO #myInfo
+
 // Messages
 #notifications {
   position: fixed;
-  // bottom: -60px;
+  bottom: -60px;
   left: 10%;
   width: 80%;
   height: 50px;
@@ -116,12 +128,6 @@ nav {
   -webkit-transition: bottom 0.4s ease-in-out 0s;
   -moz-webkit-transition: bottom 0.4s ease-in-out 0s;
   transition: bottom 0.4s ease-in-out 0s;
-  // img {
-  //   height: 20px;
-  //   position: absolute;
-  //   left: 20px;
-  //   top: 15px;
-  // }
   .inner {
     padding: 20px 40px 20px 50px;
   }
@@ -211,10 +217,6 @@ nav {
   // future browsers support
 }
 /*
-#wrapper * {
-  position: absolute;
-}
-
 #boat {
   position: absolute;
   bottom: 500px;
