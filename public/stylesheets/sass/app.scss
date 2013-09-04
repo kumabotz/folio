@@ -138,7 +138,7 @@ nav {
   top: 140px;
   left: 50%;
   width: 200px;
-  margin: 0 0 0 -96px;
+  margin-left: -96px;
   z-index: 20;
   text-align: center;
   -webkit-animation: fade 2.5s ease infinite;
@@ -204,8 +204,17 @@ nav {
   background: rgba(0,0,0,1);
   border: 1px solid rgba(255,255,255,0.3);
   border-radius: 10px 10px 0 0;
-  margin: 0 0 0 -25px;
+  margin-left: -25px;
   z-index: 52;
+}
+
+.caveHoleTrack {
+  position: absolute;
+  left: 50%;
+  width: 200px;
+  background: url(../images/caveBG.png) repeat;
+  margin-left: -100px;
+  z-index: 54;
 }
 
 #startCave {
@@ -228,6 +237,219 @@ nav {
   top: 94px;
   border-bottom: none;
   height: 28px;
+}
+
+#startCaveHoleTrack {
+  top: 0;
+  height: 92px;
+}
+
+// Roads
+.road {
+  position: absolute;
+  background: url(../images/road.png) repeat;
+}
+
+.road.side {
+  width: 50%;
+  height: 200px;
+  z-index: 1;
+  box-shadow: 0 0 10px rgba(0,0,0,0.5);
+  &:before {
+    position: absolute;
+    top: -15px;
+    left: 0;
+    width: 100%;
+    height: 15px;
+    background: url(../images/fenceHor.png) repeat-x top;
+    content: "";
+  }
+  &:after {
+    position: absolute;
+    bottom: -15px;
+    left: 0;
+    width: 100%;
+    height: 15px;
+    background: url(../images/fenceHor.png) repeat-x top;
+    content: "";
+  }
+}
+
+#mainRoad {
+  width: 200px;
+  height: 100%;
+  top: 0;
+  z-index: 8;
+  left: 50%;
+  margin-left: -100px;
+}
+
+#leftFence {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  width: 6px;
+  height: 100%;
+  margin-left: -106px;
+  background: url(../images/fenceVer.png) repeat-y top;
+}
+
+#rightFence {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  width: 6px;
+  height: 100%;
+  margin-left: 102px;
+  background: url(../images/fenceVer.png) repeat-y top;
+}
+
+#aboutRoad {
+  left: 0;
+  top: 500px;
+}
+
+.trees {
+  position: absolute;
+  background: url(../images/tree.png) repeat 0 0;
+}
+
+#rightTrees {
+  right: 50%;
+  width: 64px;
+  top: 125px;
+  height: 100%;
+  margin-right: -172px;
+}
+
+.grass {
+  position: absolute;
+  background: url(../images/grass.png) repeat 0 0;
+}
+
+#leftGrass {
+  left: 50%;
+  width: 30px;
+  top: 125px;
+  height: 100%;
+  margin-left: -136px;
+}
+
+.sea {
+  position: absolute;
+  left: 0;
+  background: url(../images/sea.png) repeat;
+  width: 100%;
+  z-index: 50;
+}
+
+#endSea {
+  bottom: 0;
+  height: 800px;
+  -webkit-animation: seamove 6s linear infinite;
+  -moz-animation: seamove 6s linear infinite;
+  animation: seamove 6s linear infinite;
+  &:after {
+    position: absolute;
+    top: 0;
+    left: 0;
+    background: url(../images/seaStart.png) repeat center bottom;
+    width: 100%;
+    height: 9px;
+    content: "";
+    box-shadow: 0 4px 3px rgba(0,0,0,0.3);
+    z-index: 51;
+  }
+}
+
+.bridge {
+  position: absolute;
+  left: 50%;
+  width: 210px;
+  background: url(../images/bridge.png) repeat-y;
+  margin-left: -105px;
+  z-index: 52;
+}
+
+#endBridge {
+  bottom: 600px;
+  height: 200px;
+  &:after {
+    position: absolute;
+    bottom: -16px;
+    left: 0;
+    background: url(../images/endCaveAfterBG.png) repeat center bottom;
+    width: 100%;
+    height: 16px;
+    content: "";
+    z-index: 51;
+  }
+}
+
+#boat {
+  position: absolute;
+  bottom: 500px;
+  left: 50%;
+  width: 420px;
+  height: 194px;
+  margin-left: -210px;
+  cursor: pointer;
+  background: url(../images/boat.png) no-repeat center;
+  z-index: 53;
+  -webkit-transition: all 5s linear 1.5s;
+  -moz-transition: all 5s linear 1.5s;
+  transition: all 5s linear 1.5s;
+  .sail {
+    left: -20%;
+  }
+  .sailBack {
+    left: 100%;
+    margin-left: 0;
+  }
+  .meSail {
+    position: absolute;
+    top: 50px;
+    left: 70px;
+    width: 32px;
+    height: 32px;
+    background: url(../images/walkingMe.png) no-repeat 0 -32px;
+    display: none;
+    z-index: 54;
+  }
+}
+
+// Me
+#author {
+  position: absolute;
+  top: 20px;
+  left: 8px;
+  background: url(../images/walkingMe.png) no-repeat -32px 0;
+  width: 32px;
+  height: 32px;
+  z-index: 53;
+  &:after {
+    position: absolute;
+    bottom: -4px;
+    left: 7px;
+    background: rgba(0,0,0,0.3);
+    width: 18px;
+    height: 8px;
+    content: "";
+    border-radius: 3px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.3);
+  }
+  .down {
+    background: url(../images/walkingMe.png) no-repeat -32px 0;
+  }
+  .up {
+    background: url(../images/walkingMe.png) no-repeat 0 -96px;
+  }
+  .right {
+    background: url(../images/walkingMe.png) no-repeat 0 -64px;
+  }
+  .left {
+    background: url(../images/walkingMe.png) no-repeat 0 -32px;
+  }
 }
 
 // Messages
@@ -303,26 +525,6 @@ nav {
     margin: 0 auto 10px;
   }
 }
-/*
-.road {
-  position: absolute;
-  background: url(../images/road.png) repeat;
-}
-
-.trees {
-  position: absolute;
-  background: url(../images/tree.png) repeat 0 0;
-}
-
-.sea {
-  left: 0;
-  width: 100%;
-  height: 800px;
-  background: url(../images/sea.png) repeat 0 0;
-  -webkit-animation: seamove 6s linear infinite;
-  -moz-animation: seamove 6s linear infinite;
-  animation: seamove 6s linear infinite;
-}
 
 @-webkit-keyframes seamove {
   0% {
@@ -332,7 +534,7 @@ nav {
     background-position: 65px 0;
   }
 }
-*/
+
 @-moz-keyframes seamove {
   // firefox support
 }
@@ -340,24 +542,8 @@ nav {
 @-keyframes seamove {
   // future browsers support
 }
+
 /*
-#boat {
-  position: absolute;
-  bottom: 500px;
-  left: 50%;
-  margin-left: -210px;
-  width: 420px;
-  height: 194px;
-  background: url(../images/boat.png) no-repeat center;
-  -webkit-transition: all 5s linear 1.5s;
-  -moz-transition: all 5s linear 1.5s;
-  transition: all 5s linear 1.5s;
-}
-
-#boat.sail {
-  left: -20%;
-}
-
 #contact.show {
   opacity: 1;
 }
