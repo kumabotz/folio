@@ -63,14 +63,10 @@ nav {
     border-left: 1px solid transparent;
     border-right: 1px solid transparent;
     text-shadow: 1px 1px 0 #000; }
-    nav a:hover {
+    nav a:hover, nav a.current {
       background: rgba(0, 0, 0, 0.3);
       border-left: 1px solid rgba(0, 0, 0, 0.1);
       border-right: 1px solid rgba(255, 255, 255, 0.1); }
-  nav a.current {
-    background: rgba(0, 0, 0, 0.3);
-    border-left: 1px solid rgba(0, 0, 0, 0.1);
-    border-right: 1px solid rgba(255, 255, 255, 0.1); }
   nav li.last a {
     float: right;
     margin-right: 30px;
@@ -201,28 +197,27 @@ nav {
 .road {
   position: absolute;
   background: url(../images/road.png) repeat; }
-
-.road.side {
-  width: 50%;
-  height: 200px;
-  z-index: 1;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5); }
-  .road.side:before {
-    position: absolute;
-    top: -15px;
-    left: 0;
-    width: 100%;
-    height: 15px;
-    background: url(../images/fenceHor.png) repeat-x top;
-    content: ""; }
-  .road.side:after {
-    position: absolute;
-    bottom: -15px;
-    left: 0;
-    width: 100%;
-    height: 15px;
-    background: url(../images/fenceHor.png) repeat-x top;
-    content: ""; }
+  .road.side {
+    width: 50%;
+    height: 200px;
+    z-index: 1;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5); }
+    .road.side:before {
+      position: absolute;
+      top: -15px;
+      left: 0;
+      width: 100%;
+      height: 15px;
+      background: url(../images/fenceHor.png) repeat-x top;
+      content: ""; }
+    .road.side:after {
+      position: absolute;
+      bottom: -15px;
+      left: 0;
+      width: 100%;
+      height: 15px;
+      background: url(../images/fenceHor.png) repeat-x top;
+      content: ""; }
 
 #mainRoad {
   width: 200px;
@@ -321,6 +316,49 @@ nav {
     content: "";
     z-index: 51; }
 
+.flowers {
+  position: absolute;
+  width: 32px;
+  height: 28px;
+  background: url(../images/flowers.png) repeat left top;
+  z-index: 49; }
+  .flowers.r1 {
+    top: 470px;
+    right: 170px; }
+  .flowers.r2 {
+    top: 140px;
+    left: 10px; }
+  .flowers.r3 {
+    top: 225px;
+    right: 65px; }
+  .flowers.r4 {
+    top: 400px;
+    left: 80px; }
+  .flowers.r5 {
+    top: 7000px;
+    right: 180px; }
+  .flowers.r6 {
+    top: 870px;
+    left: 180px; }
+  .flowers.r7 {
+    top: 1240px;
+    left: 280px; }
+  .flowers.r8 {
+    top: 1030px;
+    right: 30px; }
+  .flowers.r9 {
+    top: 1500;
+    left: 30px; }
+  .flowers.r10 {
+    top: 1600px;
+    right: 100px; }
+  .flowers.r11 {
+    top: 1670px;
+    left: 140px; }
+  .flowers.r12 {
+    top: 1340px;
+    right: 210px; }
+
 #boat {
   position: absolute;
   bottom: 500px;
@@ -348,6 +386,30 @@ nav {
     background: url(../images/walkingMe.png) no-repeat 0 -32px;
     display: none;
     z-index: 54; }
+
+#contact {
+  position: absolute;
+  bottom: 40px;
+  left: 50%;
+  margin-left: -400px;
+  width: 800px;
+  height: 500px;
+  font-family: 'Lekton', Helvetica, Arial, sans-serif;
+  color: #fff;
+  opacity: 0;
+  z-index: 51;
+  -webkit-transition: all 1s linear 2.5s;
+  -moz-transition: all 1s linear 2.5s;
+  transition: all 1s linear 2.5s; }
+  #contact h1 {
+    font-family: 'SilkscreenNormal';
+    font-size: 52px;
+    margin-bottom: 40px;
+    text-shadow: 2px 2px 1px rgba(0, 0, 0, 0.6); }
+  #contact > p {
+    font-size: 16px;
+    font-weight: bold;
+    text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.8); }
 
 #author {
   position: absolute;
@@ -447,8 +509,3 @@ nav {
 
 @-moz-keyframes seamove {}
 @-keyframes seamove {}
-/*
-#contact.show {
-  opacity: 1;
-}
-*/
