@@ -16,10 +16,23 @@
   src: url('../fonts/slkscrb-webfont.woff') format('woff');
 }
 
+ul,p,dl,hr,h1,h2,h3,h4,h5,h6,pre,table,address,fieldset,blockquote {
+  margin-bottom: 20px;
+}
+
 @mixin current-li {
   background: rgba(0,0,0,0.3);
   border-left: 1px solid rgba(0,0,0,0.1);
   border-right: 1px solid rgba(255,255,255,0.1);
+}
+
+.clear {
+  float: none;
+  padding: 0;
+  margin: 0;
+  overflow: hidden;
+  display: block;
+  clear: both;
 }
 
 .clearfix {
@@ -214,6 +227,23 @@ nav {
   z-index: 54;
 }
 
+.sea {
+  position: absolute;
+  left: 0;
+  background: url(../images/sea.png) repeat;
+  width: 100%;
+  z-index: 50;
+}
+
+.bridge {
+  position: absolute;
+  left: 50%;
+  width: 210px;
+  background: url(../images/bridge.png) repeat-y;
+  margin-left: -105px;
+  z-index: 52;
+}
+
 #startCave {
   top: 0;
   height: 100px;
@@ -239,6 +269,130 @@ nav {
 #startCaveHoleTrack {
   top: 0;
   height: 92px;
+}
+
+#endSea {
+  bottom: 0;
+  height: 800px;
+  -webkit-animation: seamove 6s linear infinite;
+  -moz-animation: seamove 6s linear infinite;
+  animation: seamove 6s linear infinite;
+  &:after {
+    position: absolute;
+    top: 0;
+    left: 0;
+    background: url(../images/seaStart.png) repeat center bottom;
+    width: 100%;
+    height: 9px;
+    content: "";
+    box-shadow: 0 4px 3px rgba(0,0,0,0.3);
+    z-index: 51;
+  }
+}
+
+@-webkit-keyframes seamove {
+  0% {
+    background-position: 0 0;
+  }
+  100% {
+    background-position: 65px 0;
+  }
+}
+
+@-moz-keyframes seamove {
+  // firefox support
+}
+
+@-keyframes seamove {
+  // future browsers support
+}
+
+#endBridge {
+  bottom: 600px;
+  height: 200px;
+  &:after {
+    position: absolute;
+    bottom: -16px;
+    left: 0;
+    background: url(../images/endCaveAfterBG.png) repeat center bottom;
+    width: 100%;
+    height: 16px;
+    content: "";
+    z-index: 51;
+  }
+}
+
+#boat {
+  position: absolute;
+  bottom: 500px;
+  left: 50%;
+  width: 420px;
+  height: 194px;
+  margin-left: -210px;
+  cursor: pointer;
+  background: url(../images/boat.png) no-repeat center;
+  z-index: 53;
+  -webkit-transition: all 5s linear 1.5s;
+  -moz-transition: all 5s linear 1.5s;
+  transition: all 5s linear 1.5s;
+  .sail {
+    left: -20%;
+  }
+  .sailBack {
+    left: 100%;
+    margin-left: 0;
+  }
+  .meSail {
+    position: absolute;
+    top: 50px;
+    left: 70px;
+    width: 32px;
+    height: 32px;
+    background: url(../images/walkingMe.png) no-repeat 0 -32px;
+    display: none;
+    z-index: 54;
+    &:after {
+      position: absolute;
+      bottom: -4px;
+      left: 7px;
+      background: rgba(0,0,0,0.3);
+      width: 18px;
+      height: 8px;
+      content: "";
+      border-radius: 3px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.3);
+    }
+  }
+}
+
+#contact {
+  position: absolute;
+  bottom: 40px;
+  left: 50%;
+  margin-left: -400px;
+  width: 800px;
+  height: 500px;
+  font-family: 'Lekton', Helvetica, Arial, sans-serif;
+  color: #fff;
+  opacity: 0;
+  z-index: 51;
+  -webkit-transition: all 1s linear 2.5s;
+  -moz-transition: all 1s linear 2.5s;
+  transition: all 1s linear 2.5s;
+  h1 {
+    font-family: 'SilkscreenNormal';
+    font-size: 52px;
+    margin-bottom: 40px;
+    text-shadow: 2px 2px 1px rgba(0,0,0,0.6);
+  }
+  > p {
+    font-size: 16px;
+    font-weight: bold;
+    text-shadow: 1px 1px 1px rgba(0,0,0,0.8)
+  }
+  &.show {
+    opacity: 1;
+  }
 }
 
 // Roads
@@ -305,6 +459,16 @@ nav {
   top: 500px;
 }
 
+#servicesRoad {
+  right: 0;
+  top: 784px;
+}
+
+#portfolioRoad {
+  left: 0;
+  top: 1000px;
+}
+
 .trees {
   position: absolute;
   background: url(../images/tree.png) repeat 0 0;
@@ -329,57 +493,6 @@ nav {
   top: 125px;
   height: 100%;
   margin-left: -136px;
-}
-
-.sea {
-  position: absolute;
-  left: 0;
-  background: url(../images/sea.png) repeat;
-  width: 100%;
-  z-index: 50;
-}
-
-#endSea {
-  bottom: 0;
-  height: 800px;
-  -webkit-animation: seamove 6s linear infinite;
-  -moz-animation: seamove 6s linear infinite;
-  animation: seamove 6s linear infinite;
-  &:after {
-    position: absolute;
-    top: 0;
-    left: 0;
-    background: url(../images/seaStart.png) repeat center bottom;
-    width: 100%;
-    height: 9px;
-    content: "";
-    box-shadow: 0 4px 3px rgba(0,0,0,0.3);
-    z-index: 51;
-  }
-}
-
-.bridge {
-  position: absolute;
-  left: 50%;
-  width: 210px;
-  background: url(../images/bridge.png) repeat-y;
-  margin-left: -105px;
-  z-index: 52;
-}
-
-#endBridge {
-  bottom: 600px;
-  height: 200px;
-  &:after {
-    position: absolute;
-    bottom: -16px;
-    left: 0;
-    background: url(../images/endCaveAfterBG.png) repeat center bottom;
-    width: 100%;
-    height: 16px;
-    content: "";
-    z-index: 51;
-  }
 }
 
 .flowers {
@@ -438,62 +551,173 @@ nav {
   }
 }
 
-#boat {
+// Houses
+.house {
   position: absolute;
-  bottom: 500px;
-  left: 50%;
-  width: 420px;
-  height: 194px;
-  margin-left: -210px;
+  z-index: 56;
   cursor: pointer;
-  background: url(../images/boat.png) no-repeat center;
-  z-index: 53;
-  -webkit-transition: all 5s linear 1.5s;
-  -moz-transition: all 5s linear 1.5s;
-  transition: all 5s linear 1.5s;
-  .sail {
-    left: -20%;
+  // + sign is the adjacent sibling selector
+  &:hover + div.sign span {
+    opacity: 1;
   }
-  .sailBack {
-    left: 100%;
-    margin-left: 0;
-  }
-  .meSail {
-    position: absolute;
-    top: 50px;
-    left: 70px;
-    width: 32px;
-    height: 32px;
-    background: url(../images/walkingMe.png) no-repeat 0 -32px;
+  .lightbox {
     display: none;
-    z-index: 54;
   }
 }
 
-#contact {
+.door {
   position: absolute;
-  bottom: 40px;
-  left: 50%;
-  margin-left: -400px;
-  width: 800px;
-  height: 500px;
-  font-family: 'Lekton', Helvetica, Arial, sans-serif;
-  color: #fff;
-  opacity: 0;
-  z-index: 51;
-  -webkit-transition: all 1s linear 2.5s;
-  -moz-transition: all 1s linear 2.5s;
-  transition: all 1s linear 2.5s;
-  h1 {
-    font-family: 'SilkscreenNormal';
-    font-size: 52px;
-    margin-bottom: 40px;
-    text-shadow: 2px 2px 1px rgba(0,0,0,0.6);
+  // transition-property transition duration transition-timing-function transition-delay
+  -webkit-transition: all 0.4s ease 0s;
+  -moz-transition: all 0.4s ease 0s;
+  transition: all 0.4s ease 0s;
+}
+
+.hole {
+  background: rgba(0,0,0,0.8);
+  z-index: 50;
+  position: absolute;
+}
+
+#aboutHouse {
+  background: url(../images/house1.png) no-repeat;
+  width: 200px;;
+  height: 140px;
+  top: 470px;
+  left: 50px;
+  .door {
+    background: url(../images/house1_door.png) no-repeat;
+    width: 36px;
+    height: 39px;
+    bottom: 2px;
+    left: 41px;
+    &.open {
+      left: 77px;
+      width: 0;
+    }
   }
-  > p {
-    font-size: 16px;
-    font-weight: bold;
-    text-shadow: 1px 1px 1px rgba(0,0,0,0.8)
+}
+
+#aboutHole {
+  width: 155px;
+  height: 70px;
+  left: 55px;
+  top: 535px;
+}
+
+#servicesHouse {
+  background: url(../images/house2.png) no-repeat;
+  width: 200px;
+  height: 165px;
+  top: 754px;
+  right: 50px;
+  .door {
+    background: url(../images/house2_door.png) no-repeat;
+    width: 32px;
+    height: 32px;
+    bottom: 0;
+    left: 101px;
+    &.open {
+      bottom: 32px;
+      height: 0;
+    }
+  }
+}
+
+#servicesHole {
+  width: 40px;
+  height: 70px;
+  right: 115px;
+  top: 845px;
+}
+
+#portfolioHouse {
+  background: url(../images/house4.png) no-repeat;
+  width: 240px;
+  height: 154px;
+  top: 950px;
+  left: 50px;
+  .door {
+    background: url(../images/house4_door.png) no-repeat;
+    width: 32px;
+    height: 33px;
+    bottom: 2px;
+    left: 105px;
+    &.open {
+      left: 137px;
+      width: 0;
+    }
+  }
+}
+
+#portfolioHole {
+  width: 40px;
+  height: 70px;
+  left: 145px;
+  top: 1032px;
+}
+
+// Signs
+.sign {
+  position: absolute;
+  background: url(../images/sign.png) no-repeat center;
+  width: 30px;
+  height: 34px;
+  z-index: 58;
+  cursor: pointer;
+  span {
+    opacity: 0;
+    background: #000;
+    position: absolute;
+    top: -35px;
+    border-radius: 5px;
+    padding: 5px 10px;
+    color: #fff;
+    display: block;
+    width: 80px;
+    text-align: center;
+    left: 50%;
+    font-family: 'SilkscreenNormal';
+    margin-left: -50px;
+    -webkit-transition: all 0.4s ease 0s;
+    -moz-transition: all 0.4s ease 0s;
+    transition: all 0.4s ease 0s;
+    &:after {
+      border-top: 6px solid #000;
+      border-right: 7px solid transparent;
+      border-left: 7px solid transparent;
+      content: "";
+      left: 50%;
+      margin-left: -6px;
+      bottom: -6px;
+      position: absolute;
+    }
+  }
+  &:hover span {
+    opacity: 1;
+  }
+}
+
+#aboutSign {
+  left: 270px;
+  top: 575px;
+}
+
+#servicesSign {
+  right: 270px;
+  top: 867px;
+  span {
+    width: 140px;
+    margin-left: -80px;
+  }
+}
+
+#portfolioSign {
+  left: 310px;
+  top: 1070px;
+  span {
+    width: 100px;
+    margin-left: -60px;
   }
 }
 
@@ -528,6 +752,169 @@ nav {
   }
   .left {
     background: url(../images/walkingMe.png) no-repeat 0 -32px;
+  }
+}
+
+// lightboxes
+#dark {
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.9);
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 900;
+}
+
+.lightbox {
+  width: 900px;
+  height: 620px;
+  top: 50%;
+  left: 50%;
+  margin: -300px 0 0 -450px;
+  position: fixed;
+  font-family: Helvetica;
+  display: none;
+  z-index: 905;
+  #closeLB {
+    position: absolute;
+    right: 10px;
+    top: 10px;
+    font: 11px/14px 'SilkscreenBold', Arial, sans-serif;
+    z-index: 910;
+    color: #222;
+    text-shadow: 0 0 3px rgba(255,255,255,0.8);
+    cursor: pointer;
+    &:hover {
+      color: #000;
+      text-shadow: 0 0 8px rgba(255,255,255,0.8);
+    }
+  }
+  & > .inner {
+    background: url(../images/wood.png) repeat;
+    min-height: 570px;
+    border-radius: 10px;
+    position: relative;
+    color: #f7f7f7;
+  }
+  h2 {
+    font-size: 56px;
+    padding: 35px 20px 40px;
+    background: rgba(255,255,255,0.2);
+    border-bottom: 1px solid rgba(255,255,255,0.3);
+    box-shadow: 0 2px 0 rgba(0,0,0,0.2);
+    margin: 0;
+    font-family: 'SilkscreenNormal';
+    border-radius: 10px 10px 0 0;
+    text-shadow: 1px 1px 5px rgba(0,0,0,0.7);
+  }
+  p, li {
+    font-family: 'Lekton', Helvetica, Arial, sans-serif;
+    font-size: 14px;
+    line-height: 22px;
+    padding: 0 5px;
+    text-shadow: 1px 1px rgba(0,0,0,0.3);
+  }
+  article {
+    position: relative;
+    padding: 20px;
+  }
+  .about {
+    background: #f2f2f2;
+    color: #222;
+    text-shadow: 1px 1px 0 #fff !important;
+    h2 {
+      background: #fff;
+      text-shadow: none;
+      border-bottom: 1px solid #c7c7c7;
+      box-shadow: none;
+    }
+  }
+  .inner.services {
+    padding: 0;
+  }
+  .box {
+    position: relative;
+    margin-bottom: 25px;
+    display: block;
+    padding: 0 30px;
+    &:last-child {
+      margin-bottom: 0;
+    }
+    .icon {
+      float: left;
+      width: 64px;
+      height: 64px;
+      background: url(../images/services_icons.png) no-repeat 0 0;
+    }
+    p {
+      padding: 0 10px;
+      float: left;
+      width: 280px;
+    }
+  }
+  div.box:first-of-type {
+    padding-top: 30px;
+  }
+  .shelf {
+    height: 45px;
+    position: absolute;
+    left: 0;
+    width: 100%;
+    background: url(../images/shelf.png) repeat-x top;
+    top: 207px;
+    &.bottom {
+      top: 457px;
+    }
+  }
+  .howtoplay {
+    article > p {
+      font-family: 'Molengo', Georgia, Times, serif;
+      font-size: 16px;
+    }
+    .box {
+      width: 100%;
+      padding: 0 30px;
+      p {
+        width: 600px;
+        padding-top: 14px;
+        padding-left: 20px;
+        font-size: 18px;
+      }
+      .icon {
+        width: 48px;
+        height: 48px;
+      }
+      &#htpArrows {
+        .icon {
+          background-image: url(../images/htpArrows.png);
+        }
+      }
+      &#htpHouses {
+        .icon {
+          background-image: url(../images/htpHouses.png);
+        }
+      }
+      &#htpMouse {
+        .icon {
+          background-image: url(../images/htpMouse.png);
+        }
+      }
+      &#htpEsc {
+        .icon {
+          background-image: url(../images/htpEsc.png);
+        }
+      }
+      &#htpShare {
+        .icon {
+          background-image: url(../images/htpShare.png);
+        }
+      }
+    }
+    div.box:first-of-type {
+      padding-top: 20px;
+    }
   }
 }
 
@@ -605,23 +992,10 @@ nav {
   }
 }
 
+// IE Page
+// TODO
+
+// How To Play
 #howToPlay {
-  // display: none;
-}
-
-@-webkit-keyframes seamove {
-  0% {
-    background-position: 0 0;
-  }
-  100% {
-    background-position: 65px 0;
-  }
-}
-
-@-moz-keyframes seamove {
-  // firefox support
-}
-
-@-keyframes seamove {
-  // future browsers support
+  display: none;
 }

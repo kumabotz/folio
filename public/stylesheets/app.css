@@ -10,6 +10,17 @@
   font-style: normal;
   src: url("../fonts/slkscrb-webfont.woff") format("woff"); }
 
+ul, p, dl, hr, h1, h2, h3, h4, h5, h6, pre, table, address, fieldset, blockquote {
+  margin-bottom: 20px; }
+
+.clear {
+  float: none;
+  padding: 0;
+  margin: 0;
+  overflow: hidden;
+  display: block;
+  clear: both; }
+
 .clearfix {
   display: inline-block; }
   .clearfix:after {
@@ -171,6 +182,21 @@ nav {
   margin-left: -100px;
   z-index: 54; }
 
+.sea {
+  position: absolute;
+  left: 0;
+  background: url(../images/sea.png) repeat;
+  width: 100%;
+  z-index: 50; }
+
+.bridge {
+  position: absolute;
+  left: 50%;
+  width: 210px;
+  background: url(../images/bridge.png) repeat-y;
+  margin-left: -105px;
+  z-index: 52; }
+
 #startCave {
   top: 0;
   height: 100px; }
@@ -193,6 +219,109 @@ nav {
 #startCaveHoleTrack {
   top: 0;
   height: 92px; }
+
+#endSea {
+  bottom: 0;
+  height: 800px;
+  -webkit-animation: seamove 6s linear infinite;
+  -moz-animation: seamove 6s linear infinite;
+  animation: seamove 6s linear infinite; }
+  #endSea:after {
+    position: absolute;
+    top: 0;
+    left: 0;
+    background: url(../images/seaStart.png) repeat center bottom;
+    width: 100%;
+    height: 9px;
+    content: "";
+    box-shadow: 0 4px 3px rgba(0, 0, 0, 0.3);
+    z-index: 51; }
+
+@-webkit-keyframes seamove {
+  0% {
+    background-position: 0 0; }
+
+  100% {
+    background-position: 65px 0; } }
+
+@-moz-keyframes seamove {}
+@-keyframes seamove {}
+#endBridge {
+  bottom: 600px;
+  height: 200px; }
+  #endBridge:after {
+    position: absolute;
+    bottom: -16px;
+    left: 0;
+    background: url(../images/endCaveAfterBG.png) repeat center bottom;
+    width: 100%;
+    height: 16px;
+    content: "";
+    z-index: 51; }
+
+#boat {
+  position: absolute;
+  bottom: 500px;
+  left: 50%;
+  width: 420px;
+  height: 194px;
+  margin-left: -210px;
+  cursor: pointer;
+  background: url(../images/boat.png) no-repeat center;
+  z-index: 53;
+  -webkit-transition: all 5s linear 1.5s;
+  -moz-transition: all 5s linear 1.5s;
+  transition: all 5s linear 1.5s; }
+  #boat .sail {
+    left: -20%; }
+  #boat .sailBack {
+    left: 100%;
+    margin-left: 0; }
+  #boat .meSail {
+    position: absolute;
+    top: 50px;
+    left: 70px;
+    width: 32px;
+    height: 32px;
+    background: url(../images/walkingMe.png) no-repeat 0 -32px;
+    display: none;
+    z-index: 54; }
+    #boat .meSail:after {
+      position: absolute;
+      bottom: -4px;
+      left: 7px;
+      background: rgba(0, 0, 0, 0.3);
+      width: 18px;
+      height: 8px;
+      content: "";
+      border-radius: 3px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.3); }
+
+#contact {
+  position: absolute;
+  bottom: 40px;
+  left: 50%;
+  margin-left: -400px;
+  width: 800px;
+  height: 500px;
+  font-family: 'Lekton', Helvetica, Arial, sans-serif;
+  color: #fff;
+  opacity: 0;
+  z-index: 51;
+  -webkit-transition: all 1s linear 2.5s;
+  -moz-transition: all 1s linear 2.5s;
+  transition: all 1s linear 2.5s; }
+  #contact h1 {
+    font-family: 'SilkscreenNormal';
+    font-size: 52px;
+    margin-bottom: 40px;
+    text-shadow: 2px 2px 1px rgba(0, 0, 0, 0.6); }
+  #contact > p {
+    font-size: 16px;
+    font-weight: bold;
+    text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.8); }
+  #contact.show {
+    opacity: 1; }
 
 .road {
   position: absolute;
@@ -249,6 +378,14 @@ nav {
   left: 0;
   top: 500px; }
 
+#servicesRoad {
+  right: 0;
+  top: 784px; }
+
+#portfolioRoad {
+  left: 0;
+  top: 1000px; }
+
 .trees {
   position: absolute;
   background: url(../images/tree.png) repeat 0 0; }
@@ -270,51 +407,6 @@ nav {
   top: 125px;
   height: 100%;
   margin-left: -136px; }
-
-.sea {
-  position: absolute;
-  left: 0;
-  background: url(../images/sea.png) repeat;
-  width: 100%;
-  z-index: 50; }
-
-#endSea {
-  bottom: 0;
-  height: 800px;
-  -webkit-animation: seamove 6s linear infinite;
-  -moz-animation: seamove 6s linear infinite;
-  animation: seamove 6s linear infinite; }
-  #endSea:after {
-    position: absolute;
-    top: 0;
-    left: 0;
-    background: url(../images/seaStart.png) repeat center bottom;
-    width: 100%;
-    height: 9px;
-    content: "";
-    box-shadow: 0 4px 3px rgba(0, 0, 0, 0.3);
-    z-index: 51; }
-
-.bridge {
-  position: absolute;
-  left: 50%;
-  width: 210px;
-  background: url(../images/bridge.png) repeat-y;
-  margin-left: -105px;
-  z-index: 52; }
-
-#endBridge {
-  bottom: 600px;
-  height: 200px; }
-  #endBridge:after {
-    position: absolute;
-    bottom: -16px;
-    left: 0;
-    background: url(../images/endCaveAfterBG.png) repeat center bottom;
-    width: 100%;
-    height: 16px;
-    content: "";
-    z-index: 51; }
 
 .flowers {
   position: absolute;
@@ -359,57 +451,145 @@ nav {
     top: 1340px;
     right: 210px; }
 
-#boat {
+.house {
   position: absolute;
-  bottom: 500px;
-  left: 50%;
-  width: 420px;
-  height: 194px;
-  margin-left: -210px;
-  cursor: pointer;
-  background: url(../images/boat.png) no-repeat center;
-  z-index: 53;
-  -webkit-transition: all 5s linear 1.5s;
-  -moz-transition: all 5s linear 1.5s;
-  transition: all 5s linear 1.5s; }
-  #boat .sail {
-    left: -20%; }
-  #boat .sailBack {
-    left: 100%;
-    margin-left: 0; }
-  #boat .meSail {
-    position: absolute;
-    top: 50px;
-    left: 70px;
+  z-index: 56;
+  cursor: pointer; }
+  .house:hover + div.sign span {
+    opacity: 1; }
+  .house .lightbox {
+    display: none; }
+
+.door {
+  position: absolute;
+  -webkit-transition: all 0.4s ease 0s;
+  -moz-transition: all 0.4s ease 0s;
+  transition: all 0.4s ease 0s; }
+
+.hole {
+  background: rgba(0, 0, 0, 0.8);
+  z-index: 50;
+  position: absolute; }
+
+#aboutHouse {
+  background: url(../images/house1.png) no-repeat;
+  width: 200px;
+  height: 140px;
+  top: 470px;
+  left: 50px; }
+  #aboutHouse .door {
+    background: url(../images/house1_door.png) no-repeat;
+    width: 36px;
+    height: 39px;
+    bottom: 2px;
+    left: 41px; }
+    #aboutHouse .door.open {
+      left: 77px;
+      width: 0; }
+
+#aboutHole {
+  width: 155px;
+  height: 70px;
+  left: 55px;
+  top: 535px; }
+
+#servicesHouse {
+  background: url(../images/house2.png) no-repeat;
+  width: 200px;
+  height: 165px;
+  top: 754px;
+  right: 50px; }
+  #servicesHouse .door {
+    background: url(../images/house2_door.png) no-repeat;
     width: 32px;
     height: 32px;
-    background: url(../images/walkingMe.png) no-repeat 0 -32px;
-    display: none;
-    z-index: 54; }
+    bottom: 0;
+    left: 101px; }
+    #servicesHouse .door.open {
+      bottom: 32px;
+      height: 0; }
 
-#contact {
+#servicesHole {
+  width: 40px;
+  height: 70px;
+  right: 115px;
+  top: 845px; }
+
+#portfolioHouse {
+  background: url(../images/house4.png) no-repeat;
+  width: 240px;
+  height: 154px;
+  top: 950px;
+  left: 50px; }
+  #portfolioHouse .door {
+    background: url(../images/house4_door.png) no-repeat;
+    width: 32px;
+    height: 33px;
+    bottom: 2px;
+    left: 105px; }
+    #portfolioHouse .door.open {
+      left: 137px;
+      width: 0; }
+
+#portfolioHole {
+  width: 40px;
+  height: 70px;
+  left: 145px;
+  top: 1032px; }
+
+.sign {
   position: absolute;
-  bottom: 40px;
-  left: 50%;
-  margin-left: -400px;
-  width: 800px;
-  height: 500px;
-  font-family: 'Lekton', Helvetica, Arial, sans-serif;
-  color: #fff;
-  opacity: 0;
-  z-index: 51;
-  -webkit-transition: all 1s linear 2.5s;
-  -moz-transition: all 1s linear 2.5s;
-  transition: all 1s linear 2.5s; }
-  #contact h1 {
+  background: url(../images/sign.png) no-repeat center;
+  width: 30px;
+  height: 34px;
+  z-index: 58;
+  cursor: pointer; }
+  .sign span {
+    opacity: 0;
+    background: #000;
+    position: absolute;
+    top: -35px;
+    border-radius: 5px;
+    padding: 5px 10px;
+    color: #fff;
+    display: block;
+    width: 80px;
+    text-align: center;
+    left: 50%;
     font-family: 'SilkscreenNormal';
-    font-size: 52px;
-    margin-bottom: 40px;
-    text-shadow: 2px 2px 1px rgba(0, 0, 0, 0.6); }
-  #contact > p {
-    font-size: 16px;
-    font-weight: bold;
-    text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.8); }
+    margin-left: -50px;
+    -webkit-transition: all 0.4s ease 0s;
+    -moz-transition: all 0.4s ease 0s;
+    transition: all 0.4s ease 0s; }
+    .sign span:after {
+      border-top: 6px solid #000;
+      border-right: 7px solid transparent;
+      border-left: 7px solid transparent;
+      content: "";
+      left: 50%;
+      margin-left: -6px;
+      bottom: -6px;
+      position: absolute; }
+  .sign:hover span {
+    opacity: 1; }
+
+#aboutSign {
+  left: 270px;
+  top: 575px; }
+
+#servicesSign {
+  right: 270px;
+  top: 867px; }
+  #servicesSign span {
+    width: 140px;
+    margin-left: -80px; }
+
+#portfolioSign {
+  left: 310px;
+  top: 1070px; }
+  #portfolioSign span {
+    width: 100px;
+    margin-left: -60px; }
 
 #author {
   position: absolute;
@@ -437,6 +617,128 @@ nav {
     background: url(../images/walkingMe.png) no-repeat 0 -64px; }
   #author .left {
     background: url(../images/walkingMe.png) no-repeat 0 -32px; }
+
+#dark {
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.9);
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 900; }
+
+.lightbox {
+  width: 900px;
+  height: 620px;
+  top: 50%;
+  left: 50%;
+  margin: -300px 0 0 -450px;
+  position: fixed;
+  font-family: Helvetica;
+  display: none;
+  z-index: 905; }
+  .lightbox #closeLB {
+    position: absolute;
+    right: 10px;
+    top: 10px;
+    font: 11px/14px 'SilkscreenBold', Arial, sans-serif;
+    z-index: 910;
+    color: #222;
+    text-shadow: 0 0 3px rgba(255, 255, 255, 0.8);
+    cursor: pointer; }
+    .lightbox #closeLB:hover {
+      color: #000;
+      text-shadow: 0 0 8px rgba(255, 255, 255, 0.8); }
+  .lightbox > .inner {
+    background: url(../images/wood.png) repeat;
+    min-height: 570px;
+    border-radius: 10px;
+    position: relative;
+    color: #f7f7f7; }
+  .lightbox h2 {
+    font-size: 56px;
+    padding: 35px 20px 40px;
+    background: rgba(255, 255, 255, 0.2);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+    box-shadow: 0 2px 0 rgba(0, 0, 0, 0.2);
+    margin: 0;
+    font-family: 'SilkscreenNormal';
+    border-radius: 10px 10px 0 0;
+    text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.7); }
+  .lightbox p, .lightbox li {
+    font-family: 'Lekton', Helvetica, Arial, sans-serif;
+    font-size: 14px;
+    line-height: 22px;
+    padding: 0 5px;
+    text-shadow: 1px 1px rgba(0, 0, 0, 0.3); }
+  .lightbox article {
+    position: relative;
+    padding: 20px; }
+  .lightbox .about {
+    background: #f2f2f2;
+    color: #222;
+    text-shadow: 1px 1px 0 #fff !important; }
+    .lightbox .about h2 {
+      background: #fff;
+      text-shadow: none;
+      border-bottom: 1px solid #c7c7c7;
+      box-shadow: none; }
+  .lightbox .inner.services {
+    padding: 0; }
+  .lightbox .box {
+    position: relative;
+    margin-bottom: 25px;
+    display: block;
+    padding: 0 30px; }
+    .lightbox .box:last-child {
+      margin-bottom: 0; }
+    .lightbox .box .icon {
+      float: left;
+      width: 64px;
+      height: 64px;
+      background: url(../images/services_icons.png) no-repeat 0 0; }
+    .lightbox .box p {
+      padding: 0 10px;
+      float: left;
+      width: 280px; }
+  .lightbox div.box:first-of-type {
+    padding-top: 30px; }
+  .lightbox .shelf {
+    height: 45px;
+    position: absolute;
+    left: 0;
+    width: 100%;
+    background: url(../images/shelf.png) repeat-x top;
+    top: 207px; }
+    .lightbox .shelf.bottom {
+      top: 457px; }
+  .lightbox .howtoplay article > p {
+    font-family: 'Molengo', Georgia, Times, serif;
+    font-size: 16px; }
+  .lightbox .howtoplay .box {
+    width: 100%;
+    padding: 0 30px; }
+    .lightbox .howtoplay .box p {
+      width: 600px;
+      padding-top: 14px;
+      padding-left: 20px;
+      font-size: 18px; }
+    .lightbox .howtoplay .box .icon {
+      width: 48px;
+      height: 48px; }
+    .lightbox .howtoplay .box#htpArrows .icon {
+      background-image: url(../images/htpArrows.png); }
+    .lightbox .howtoplay .box#htpHouses .icon {
+      background-image: url(../images/htpHouses.png); }
+    .lightbox .howtoplay .box#htpMouse .icon {
+      background-image: url(../images/htpMouse.png); }
+    .lightbox .howtoplay .box#htpEsc .icon {
+      background-image: url(../images/htpEsc.png); }
+    .lightbox .howtoplay .box#htpShare .icon {
+      background-image: url(../images/htpShare.png); }
+  .lightbox .howtoplay div.box:first-of-type {
+    padding-top: 20px; }
 
 #notifications {
   position: fixed;
@@ -500,12 +802,5 @@ nav {
     background: url(../images/walkingMe.png) no-repeat 0 0;
     margin: 0 auto 10px; }
 
-@-webkit-keyframes seamove {
-  0% {
-    background-position: 0 0; }
-
-  100% {
-    background-position: 65px 0; } }
-
-@-moz-keyframes seamove {}
-@-keyframes seamove {}
+#howToPlay {
+  display: none; }
