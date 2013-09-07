@@ -439,7 +439,7 @@ nav {
     top: 1030px;
     right: 30px; }
   .flowers.r9 {
-    top: 1500;
+    top: 1500px;
     left: 30px; }
   .flowers.r10 {
     top: 1600px;
@@ -628,7 +628,7 @@ nav {
   left: 0;
   z-index: 900; }
 
-.lightbox {
+#lightbox {
   width: 900px;
   height: 620px;
   top: 50%;
@@ -638,7 +638,7 @@ nav {
   font-family: Helvetica;
   display: none;
   z-index: 905; }
-  .lightbox #closeLB {
+  #lightbox #closeLB {
     position: absolute;
     right: 10px;
     top: 10px;
@@ -647,16 +647,16 @@ nav {
     color: #222;
     text-shadow: 0 0 3px rgba(255, 255, 255, 0.8);
     cursor: pointer; }
-    .lightbox #closeLB:hover {
+    #lightbox #closeLB:hover {
       color: #000;
       text-shadow: 0 0 8px rgba(255, 255, 255, 0.8); }
-  .lightbox > .inner {
+  #lightbox > .inner {
     background: url(../images/wood.png) repeat;
     min-height: 570px;
     border-radius: 10px;
     position: relative;
     color: #f7f7f7; }
-  .lightbox h2 {
+  #lightbox h2 {
     font-size: 56px;
     padding: 35px 20px 40px;
     background: rgba(255, 255, 255, 0.2);
@@ -666,78 +666,78 @@ nav {
     font-family: 'SilkscreenNormal';
     border-radius: 10px 10px 0 0;
     text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.7); }
-  .lightbox p, .lightbox li {
+  #lightbox p, #lightbox li {
     font-family: 'Lekton', Helvetica, Arial, sans-serif;
     font-size: 14px;
     line-height: 22px;
     padding: 0 5px;
     text-shadow: 1px 1px rgba(0, 0, 0, 0.3); }
-  .lightbox article {
+  #lightbox article {
     position: relative;
     padding: 20px; }
-  .lightbox .about {
+  #lightbox .about {
     background: #f2f2f2;
     color: #222;
     text-shadow: 1px 1px 0 #fff !important; }
-    .lightbox .about h2 {
+    #lightbox .about h2 {
       background: #fff;
       text-shadow: none;
       border-bottom: 1px solid #c7c7c7;
       box-shadow: none; }
-  .lightbox .inner.services {
+  #lightbox .inner.services {
     padding: 0; }
-  .lightbox .box {
+  #lightbox .box {
     position: relative;
     margin-bottom: 25px;
     display: block;
     padding: 0 30px; }
-    .lightbox .box:last-child {
+    #lightbox .box:last-child {
       margin-bottom: 0; }
-    .lightbox .box .icon {
+    #lightbox .box .icon {
       float: left;
       width: 64px;
       height: 64px;
       background: url(../images/services_icons.png) no-repeat 0 0; }
-    .lightbox .box p {
+    #lightbox .box p {
       padding: 0 10px;
       float: left;
       width: 280px; }
-  .lightbox div.box:first-of-type {
+  #lightbox div.box:first-of-type {
     padding-top: 30px; }
-  .lightbox .shelf {
+  #lightbox .shelf {
     height: 45px;
     position: absolute;
     left: 0;
     width: 100%;
     background: url(../images/shelf.png) repeat-x top;
     top: 207px; }
-    .lightbox .shelf.bottom {
+    #lightbox .shelf.bottom {
       top: 457px; }
-  .lightbox .howtoplay article > p {
+  #lightbox .howtoplay article > p {
     font-family: 'Molengo', Georgia, Times, serif;
     font-size: 16px; }
-  .lightbox .howtoplay .box {
+  #lightbox .howtoplay .box {
     width: 100%;
     padding: 0 30px; }
-    .lightbox .howtoplay .box p {
+    #lightbox .howtoplay .box p {
       width: 600px;
       padding-top: 14px;
       padding-left: 20px;
       font-size: 18px; }
-    .lightbox .howtoplay .box .icon {
+    #lightbox .howtoplay .box .icon {
       width: 48px;
       height: 48px; }
-    .lightbox .howtoplay .box#htpArrows .icon {
+    #lightbox .howtoplay .box#htpArrows .icon {
       background-image: url(../images/htpArrows.png); }
-    .lightbox .howtoplay .box#htpHouses .icon {
+    #lightbox .howtoplay .box#htpHouses .icon {
       background-image: url(../images/htpHouses.png); }
-    .lightbox .howtoplay .box#htpMouse .icon {
+    #lightbox .howtoplay .box#htpMouse .icon {
       background-image: url(../images/htpMouse.png); }
-    .lightbox .howtoplay .box#htpEsc .icon {
+    #lightbox .howtoplay .box#htpEsc .icon {
       background-image: url(../images/htpEsc.png); }
-    .lightbox .howtoplay .box#htpShare .icon {
+    #lightbox .howtoplay .box#htpShare .icon {
       background-image: url(../images/htpShare.png); }
-  .lightbox .howtoplay div.box:first-of-type {
+  #lightbox .howtoplay div.box:first-of-type {
     padding-top: 20px; }
 
 #notifications {
