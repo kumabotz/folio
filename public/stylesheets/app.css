@@ -61,7 +61,7 @@ nav {
   -webkit-transition: top 0.4s ease-in-out 0s;
   -moz-transition: top 0.4s ease-in-out 0s;
   transition: top 0.4s ease-in-out 0s; }
-  nav .show {
+  nav.show {
     top: 0; }
   nav ul {
     width: 100%;
@@ -272,11 +272,8 @@ nav {
   -webkit-transition: all 5s linear 1.5s;
   -moz-transition: all 5s linear 1.5s;
   transition: all 5s linear 1.5s; }
-  #boat .sail {
+  #boat.sail {
     left: -20%; }
-  #boat .sailBack {
-    left: 100%;
-    margin-left: 0; }
   #boat .meSail {
     position: absolute;
     top: 50px;
@@ -770,6 +767,11 @@ nav {
     cursor: pointer; }
     #notifications .close:hover {
       color: #444; }
+  #notifications img {
+    height: 20px;
+    position: absolute;
+    left: 20px;
+    top: 15px; }
 
 #loadingGame {
   position: fixed;
