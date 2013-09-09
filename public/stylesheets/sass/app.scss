@@ -81,7 +81,7 @@ nav {
   -webkit-transition: top 0.4s ease-in-out 0s;
   -moz-transition: top 0.4s ease-in-out 0s;
   transition: top 0.4s ease-in-out 0s;
-  .show {
+  &.show {
     top: 0;
   }
   ul {
@@ -335,13 +335,14 @@ nav {
   -webkit-transition: all 5s linear 1.5s;
   -moz-transition: all 5s linear 1.5s;
   transition: all 5s linear 1.5s;
-  .sail {
+  &.sail {
     left: -20%;
   }
-  .sailBack {
-    left: 100%;
-    margin-left: 0;
-  }
+  // unused
+  // .sailBack {
+  //   left: 100%;
+  //   margin-left: 0;
+  // }
   .meSail {
     position: absolute;
     top: 50px;
@@ -581,7 +582,7 @@ nav {
 
 #aboutHouse {
   background: url(../images/house1.png) no-repeat;
-  width: 200px;;
+  width: 200px;
   height: 140px;
   top: 470px;
   left: 50px;
@@ -954,6 +955,12 @@ nav {
     &:hover {
       color: #444;
     }
+  }
+  img {
+    height: 20px;
+    position: absolute;
+    left: 20px;
+    top: 15px;
   }
 }
 
