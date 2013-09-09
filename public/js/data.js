@@ -13,6 +13,36 @@ var houses = [
       top: 100,
       left: 41,
     }
+  },
+  {
+    name: 'Services House',
+    id: '#servicesHouse',
+    width: 200,
+    height: 165,
+    top: 754,
+    left: null,
+    right: 50,
+    door: {
+      width: 16, // 32
+      height: 32,
+      left: 101,
+      top: 133 // house.height - (door.height (165 - 32) + door.bottom)
+    }
+  },
+  {
+    name: 'Portfolio House',
+    id: '#portfolioHouse',
+    width: 240,
+    height: 154,
+    top: 950,
+    left: 50,
+    right: null,
+    door: {
+      width: 32,
+      height: 33,
+      left: 105,
+      top: 119
+    }
   }
 ];
 
@@ -29,5 +59,14 @@ var notifications = [
     text: 'If you\'re too lazy to walk, you can teleport yourself by ' +
         'clicking on the top navigation bar items',
     img: 'images/information.png'
+  },
+  {
+
+  },
+  {
+    id: 4,
+    type: 'error',
+    text: 'Stop trying to drown me down!!!',
+    img: 'images/error.png'
   }
 ]

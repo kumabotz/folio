@@ -59,9 +59,38 @@ Game.prototype = {
       } else {
         me.showNotificationsBar(notifications[0]);
       }
-     });
+    });
 
-    // TODO
+    $('.sea').unbind('click').bind('click', function() {
+      me.showNotificationsBar(notifications[3]);
+    });
+
+    $('.house').unbind('click').bind('click', function() {
+      var target = '#' + $(this).attr('id');
+      me.moveDirectToHouse(target);
+    });
+
+    $('nav a').click(function(e) {
+      e.preventDefault();
+      var target = $(this).attr('href');
+      if (target == '#boat') {
+        $('nav a').removeClass('current');
+        $(this).addClass('current');
+        me.shipSail();
+        return;
+      } else if (target == '#startCave') {
+        $('nav a').removeClass('current');
+        $(this).addClass('current');
+        $('html, body').animate({scrollTop: 0}, 'slow');
+        me.teleport($(window).width() / 2 - me.player.width() / 2, 100);
+        return;
+      } else if (target == '#howToPlay') {
+        me.lightboxInit(target, false);
+        return;
+      }
+      // the rest are houses
+      me.moveDirectToHouse(target);
+    });
 
     $(window).unbind('keydown').bind('keydown', function(event) {
       if (me.topPos > parseFloat($('#startText').css('top'))) {
@@ -103,13 +132,24 @@ Game.prototype = {
           me.hideNotificationBar();
         break;
       }
-      // TODO
+      me.openDoors(me.leftPos, me.topPos);
+      me.revealMenu(me.topPos);
     }).keyup(function() {
       if (player.attr('class') != '') {
         player.removeAttr('class').destroy();
       }
     });
-    // TODO
+
+    $('#boat').unbind('click').bind('click', function() {
+      $('nav a').removeClass('current');
+      $('nav a[href="#boat"]').addClass('current');
+      me.shipSail();
+    });
+
+    $("#notifications").find('.close').on('click', function() {
+      me.hideNotificationBar();
+    });
+
     $(document).on('click', "#dark, #closeLB", function() {
       me.closeLightbox();
     });
@@ -161,6 +201,31 @@ Game.prototype = {
       $('html, body').animate({scrollTop: y - y_center}, 'slow');
     }
     this.shipBack();
+  },
+
+  moveDirectToHouse: function(target) {
+    var house;
+    for (i = 0; i < houses.length; i++) {
+      if (houses[i].id == target) {
+        house = houses[i];
+        break;
+      }
+    }
+    var y = house.top + house.height - 30;
+    var x;
+    if (house.left && house.left != null) {
+      x = house.left + house.door.left;
+    } else {
+      // calculate the x pos in front of the door for house on the right
+      x = $(window).width() - house.width - house.right + house.door.left;
+    }
+    var canMove = this.canImove(x, y, true);
+    if (canMove) {
+      this.topPos = y;
+      this.leftPos = x;
+      this.teleport(x, y);
+      this.openDoors(x, y);
+    }
   },
 
   moveX: function(x, dir) {
@@ -223,7 +288,13 @@ Game.prototype = {
           $(houses[i].id).find(".door").removeClass('open');
         }
       } else if (houses[i].right && houses[i].right != null) {
-        // TODO
+        if (elmTop >= houses[i].top + houses[i].height - 80 &&
+            elmTop < houses[i].top + houses[i].height + player.height() &&
+            elmLeft > $(window).width() - houses[i].right - houses[i].width) {
+          $(houses[i].id).find(".door").addClass('open');
+        } else {
+          $(houses[i].id).find(".door").removeClass('open');
+        }
       } else {
         $(".door").removeClass('open');
       }
