@@ -301,6 +301,112 @@ Game.prototype = {
     }
   },
 
+  inHouse: function(elmLeft, elmTop) {
+    var player = this.player;
+    var isInHouse = [];
+    var house;
+
+    for (i = 0; i < houses.length; i++) {
+      house = houses[i];
+      if (this.collideY(elmTop, house)) {
+        // when player y is in house y-range, player is in the house
+        isInHouse.push(true);
+
+        if (this.exist(house.left)) {
+          if (this.collideHouse(elmLeft, elmTop, player, house)) {
+            if (this.collideDoor(elmLeft, player, house)) {
+              if (this.aboveDoor(elmTop, house)) {
+                this.lightboxInit(house.id, true);
+              }
+            }
+            else {
+              // player in the house but not above of the door
+              isInHouse.push(false);
+            }
+          }
+        } else if (this.exist(house.right)) {
+          // if (elmLeft > $(window).width() - houses[i].width - houses[i].right - player.width() && elmLeft < $(window).width() - houses[i].right && elmTop < houses[i].top + houses[i].height) {
+          //   if (elmLeft > $(window).width() - houses[i].width - houses[i].right + houses[i].door.left - 10  && elmLeft < $(window).width() - houses[i].right - houses[i].width + houses[i].door.left + houses[i].door.width - 10) {
+          //     isInHouse.push(true);
+          //     if (elmTop <= houses[i].top + houses[i].height - 70) {
+          //       this.lightboxInit(houses[i].id, true);
+          //     }
+          //   }
+          //   else {
+          //     isInHouse.push(false);
+          //   }
+          // }
+        }
+        break;
+      }
+    }
+    return isInHouse;
+  },
+
+  // -- helper
+  collideY: function(elmTop, obj) {
+    return elmTop > obj.top && elmTop < this.bottomOf(obj);
+  },
+
+  exist: function(elm) {
+    return elm && elm != null;
+  },
+
+  // check if player collides with the house
+  // player: (  ), house: [  ]
+  // (-[----------------]-)
+  // ( [                ] )
+  // ( [    <  >        ] )
+  // ( [    <  >        ] )
+  // ( [    <  >        ] )
+  // (--------------------)
+  collideHouse: function(elmLeft, elmTop, player, house) {
+    return elmLeft < this.rightOf(house) &&
+           elmLeft > house.left - player.width() &&
+           elmTop < this.bottomOf(house);
+  },
+
+  // check if player collides with the door
+  // player: (  ), house: [  ], door: <  >
+  //   [  (------)      ]
+  //   [  (      )      ]
+  //   [  ( <  > )      ]
+  //   [  ( <  > )      ]
+  //   [  ( <  > )      ]
+  //      (------)
+  collideDoor: function(elmLeft, player, house) {
+    return elmLeft > this.doorLeftOf(house) - player.width() / 2 &&
+           elmLeft < this.doorRightOf(house) - player.width() / 2
+  },
+
+  // check if player locates at the door and above
+  // player: (  ), house: [  ], door: <  >
+  //   [  (------)      ]
+  //   [  (      )      ]
+  //   [  ( <  > )      ]
+  //   [  (-<-->-)      ]
+  //   [    <  >        ]
+  aboveDoor: function(elmTop, house) {
+    return elmTop <= this.bottomOf(house) - 70;
+  },
+
+  rightOf: function(elm) {
+    return elm.left + elm.width;
+  },
+
+  bottomOf: function(elm) {
+    return elm.top + elm.height;
+  },
+
+  doorLeftOf: function(house) {
+    return house.left + house.door.left;
+  },
+
+  doorRightOf: function(house) {
+    return this.doorLeftOf(house) + house.door.width;
+  },
+  // --
+
   canImove: function(moveLeft, moveTop, teleported) {
     var player = this.player;
     var elmLeft = moveLeft || this.leftPos;
@@ -310,7 +416,9 @@ Game.prototype = {
       return false;
     }
 
-    // TODO
+    // check if player is around a house
+    var isHouse = this.inHouse(elmLeft, elmTop);
+    // WIP
     return true;
   },
 
