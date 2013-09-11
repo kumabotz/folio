@@ -312,38 +312,24 @@ Game.prototype = {
         // when player y is in house y-range, player is in the house
         isInHouse.push(true);
 
-        if (this.exist(house.left)) {
-          if (this.collideHouse(elmLeft, elmTop, player, house)) {
-            if (this.collideDoor(elmLeft, player, house)) {
-              if (this.aboveDoor(elmTop, house)) {
-                this.lightboxInit(house.id, true);
-              }
-            }
-            else {
-              // player in the house but not above of the door
-              isInHouse.push(false);
+        if (this.collideHouse(elmLeft, elmTop, player, house)) {
+          if (this.collideDoor(elmLeft, player, house)) {
+            if (this.aboveDoor(elmTop, house)) {
+              this.lightboxInit(house.id, true);
             }
           }
-        } else if (this.exist(house.right)) {
-          // if (elmLeft > $(window).width() - houses[i].width - houses[i].right - player.width() && elmLeft < $(window).width() - houses[i].right && elmTop < houses[i].top + houses[i].height) {
-          //   if (elmLeft > $(window).width() - houses[i].width - houses[i].right + houses[i].door.left - 10  && elmLeft < $(window).width() - houses[i].right - houses[i].width + houses[i].door.left + houses[i].door.width - 10) {
-          //     isInHouse.push(true);
-          //     if (elmTop <= houses[i].top + houses[i].height - 70) {
-          //       this.lightboxInit(houses[i].id, true);
-          //     }
-          //   }
-          //   else {
-          //     isInHouse.push(false);
-          //   }
-          // }
+          else {
+            // player in the house but not above of the door
+            isInHouse.push(false);
+          }
         }
+
         break;
       }
     }
     return isInHouse;
   },
 
-  // -- helper
   collideY: function(elmTop, obj) {
     return elmTop > obj.top && elmTop < this.bottomOf(obj);
   },
@@ -362,7 +348,7 @@ Game.prototype = {
   // (--------------------)
   collideHouse: function(elmLeft, elmTop, player, house) {
     return elmLeft < this.rightOf(house) &&
-           elmLeft > house.left - player.width() &&
+           elmLeft > this.leftOf(house) - player.width() &&
            elmTop < this.bottomOf(house);
   },
 
@@ -375,8 +361,12 @@ Game.prototype = {
   //   [  ( <  > )      ]
   //      (------)
   collideDoor: function(elmLeft, player, house) {
-    return elmLeft > this.doorLeftOf(house) - player.width() / 2 &&
-           elmLeft < this.doorRightOf(house) - player.width() / 2
+    var buffer = 10;
+    if (this.exist(house.left)) {
+      buffer = player.width() / 2;
+    }
+    return elmLeft > this.doorLeftOf(house) - buffer &&
+           elmLeft < this.doorRightOf(house) - buffer;
   },
 
   // check if player locates at the door and above
@@ -390,8 +380,24 @@ Game.prototype = {
     return elmTop <= this.bottomOf(house) - 70;
   },
 
+  leftOf: function(elm) {
+    var left = -1;
+    if (this.exist(elm.left)) {
+      left = elm.left;
+    } else if (this.exist(elm.right)) {
+      left = $(window).width() - elm.right - elm.width;
+    }
+    return left;
+  },
+
   rightOf: function(elm) {
-    return elm.left + elm.width;
+    var right = -1;
+    if (this.exist(elm.right)) {
+      right = $(window).width() - elm.right;
+    } else if (this.exist(elm.left)) {
+      right = elm.left + elm.width;
+    }
+    return right;
   },
 
   bottomOf: function(elm) {
@@ -399,13 +405,12 @@ Game.prototype = {
   },
 
   doorLeftOf: function(house) {
-    return house.left + house.door.left;
+    return this.leftOf(house) + house.door.left;
   },
 
   doorRightOf: function(house) {
     return this.doorLeftOf(house) + house.door.width;
   },
-  // --
 
   canImove: function(moveLeft, moveTop, teleported) {
     var player = this.player;
@@ -478,6 +483,7 @@ Game.prototype = {
   closeLightbox: function() {
     var me = this;
     $('#dark, #lightbox').fadeOut('fast', function() {
+      // move player down to show the effect of exit the house
       var canMove = me.canImove(me.leftPos, me.topPos + 80);
       if (canMove) {
         me.startMoving('down', 1);
