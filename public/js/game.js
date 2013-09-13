@@ -1,6 +1,6 @@
 var Game = function() {
   this.player = $("#author");
-  this.speed = 25;
+  this.speed = 15;
   this.topPos = 0;
   this.leftPos = $(window).width() / 2 - this.player.width() / 2;
 
@@ -309,7 +309,7 @@ Game.prototype = {
     for (i = 0; i < houses.length; i++) {
       house = houses[i];
       if (this.collideY(elmTop, house)) {
-        // when player y is in house y-range, player is in the house
+        // player y is in house y-range
         isInHouse.push(true);
 
         if (this.collideHouse(elmLeft, elmTop, player, house)) {
@@ -319,7 +319,7 @@ Game.prototype = {
             }
           }
           else {
-            // player in the house but not above of the door
+            // player in the house but not around the door, cannot move
             isInHouse.push(false);
           }
         }
@@ -328,6 +328,45 @@ Game.prototype = {
       }
     }
     return isInHouse;
+  },
+
+  isRoad: function(elmLeft, elmTop) {
+    var player = this.player;
+    var mainRoad = $("#mainRoad");
+    var isOnRoad = true;
+
+    // check if the player is out of boundaries
+    if (elmLeft < 0 || elmLeft >= parseFloat(player.parent().width()) - parseFloat(player.width()) ||
+        elmTop < 0 || elmTop > parseFloat(player.parent().height()) - parseFloat(player.height())) {
+      isOnRoad = false;
+    } else if (elmLeft < ($(window).width() / 2 - mainRoad.width() / 2) ||
+               elmLeft > ($(window).width() / 2 + mainRoad.width() / 2) - player.width()) {
+      // around the road
+      var mainRoadRightSide = ($(window).width() / 2 + mainRoad.width() / 2) - player.width();
+      for (i = 0; i < roads.length; i++) {
+        if (elmTop > roads[i].top && elmTop < this.bottomOf(roads[i]) - player.height()) {
+          if (roads[i].direction == 'left') {
+            if (elmLeft < mainRoadRightSide) {
+              isOnRoad = true;
+            } else {
+              isOnRoad = false;
+            }
+          } else if (roads[i].direction == 'right') {
+            if (elmLeft >= mainRoadRightSide) {
+              isOnRoad = true;
+            } else {
+              isOnRoad = false;
+            }
+          } else {
+            isOnRoad = false;
+          }
+          break;
+        } else {
+          isOnRoad = false;
+        }
+      }
+    }
+    return isOnRoad;
   },
 
   collideY: function(elmTop, obj) {
@@ -423,7 +462,29 @@ Game.prototype = {
 
     // check if player is around a house
     var isHouse = this.inHouse(elmLeft, elmTop);
-    // WIP
+    if (isHouse.indexOf(false) >= 0) {
+      return false;
+    }
+
+    var isRoad = this.isRoad(elmLeft, elmTop);
+    if (isRoad === false) {
+      return false;
+    }
+
+    // sea handler
+    if (elmTop > $('#wrapper').height() - $('#endSea').height() - player.height()) {
+      this.showNotificationsBar(notifications[2]);
+      if (elmLeft > $(window).width() / 2 - $('#endBridge').width() / 2 &&
+          elmLeft < $(window).width() / 2 + $('#endBridge').width() / 2 - player.width()) {
+        if (elmTop > $('#wrapper').height() - $('#endSea').height() + $('#endBridge').height() - 70 - player.height()) {
+          return false;
+        }
+        return true;
+      } else {
+        return false;
+      }
+    }
+
     return true;
   },
 
@@ -459,8 +520,11 @@ Game.prototype = {
     var me = this;
     if ($("#dark").length < 1) {
       if (effectMenu) {
-        alert('TODO');
+        // update current menu
+        $('nav a').removeClass('current');
+        $('nav a[href="' + elm + '"]').addClass('current');
       }
+
       // get the relevant content
       var content = $(elm).find('.lightbox').html();
 
