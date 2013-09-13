@@ -46,6 +46,30 @@ var houses = [
   }
 ];
 
+var roads = [
+  {
+    name: 'About Road',
+    id: '#aboutRoad',
+    height: 200,
+    top: 500,
+    direction: 'left'
+  },
+  {
+    name: 'Services Road',
+    id: '#servicesRoad',
+    height: 200,
+    top: 784,
+    direction: 'right'
+  },
+  {
+    name: 'Portfolio Road',
+    id: '#portfolioRoad',
+    height: 200,
+    top: 1000,
+    direction: 'left'
+  }
+];
+
 var notifications = [
   {
     id: 1,
@@ -61,7 +85,11 @@ var notifications = [
     img: 'images/information.png'
   },
   {
-
+    id: 3,
+    type: 'info',
+    text: 'Press "Return" on your keyboard or click with your mouse on the ' +
+        'ship to sail and contact me!',
+    img: 'images/information.png'
   },
   {
     id: 4,
